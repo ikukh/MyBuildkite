@@ -44,7 +44,7 @@ class Buildkite_runner:
                 pass
 
         # Wait while job is running
-        time.sleep(30)
+        time.sleep(20)
 
 
     # Make one more call to receive current job states
@@ -67,7 +67,7 @@ class Buildkite_runner:
         
     # Make a request to Jenkins server and start job there
     def start_jenkins_job(self):
-        url = 'http://admin:117e5cd4b9eda880bdb88b0571dd36f47d@localhost:8081/job/TestJob/buildWithParameters?token=123token'
+        url = 'http://admin:117e5cd4b9eda880bdb88b0571dd36f47d@localhost:8080/job/TestJob/buildWithParameters?token=123token'
         print('Starting Jenkins job ...')
         request = requests.post(url)
         header = request.headers
