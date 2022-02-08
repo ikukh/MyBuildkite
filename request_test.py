@@ -5,7 +5,8 @@ from datetime import datetime
 import os
 
 
-buildkite_token = os.environ["BKT"]
+buildkite_token = os.environ['BKT']
+print (os.environ['BKT'])
 
 # buildkite_token='fe629a29917aedc899810ccbf1a90bd7dfcc633e'
 
