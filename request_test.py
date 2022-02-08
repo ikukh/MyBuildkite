@@ -2,10 +2,12 @@ from pip import main
 import requests
 import time
 from datetime import datetime
+import os
 
 
-buildkite_token='fe629a29917aedc899810ccbf1a90bd7dfcc633e'
+buildkite_token = os.environ["BKT"]
 
+# buildkite_token='fe629a29917aedc899810ccbf1a90bd7dfcc633e'
 
 class Buildkite_runner:
 
