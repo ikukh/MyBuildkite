@@ -7,7 +7,7 @@ import os
 buildkite_token = os.environ['BKT']
 print (os.environ['BKT'])
 
-print(os.environ[MYENV])
+print(os.environ['MYENV'])
 
 
 class Buildkite_runner:
