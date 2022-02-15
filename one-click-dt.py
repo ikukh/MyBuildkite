@@ -1,12 +1,10 @@
 from pip import main
 import requests
 import time
-from datetime import datetime
 import os
 
-buildkite_token='fe629a29917aedc899810ccbf1a90bd7dfcc633e'
 
-print(os.environ[MYENV])
+buildkite_token = os.environ["ONE_CLICK_TOKEN"]
 
 
 class Buildkite_runner:
@@ -15,10 +13,11 @@ class Buildkite_runner:
         self.data = None
 
     def create_build(self):
-        timestamp = datetime.now()
-        url = 'https://api.buildkite.com/v2/organizations/ikukh-org/pipelines/test/builds'
+        # Start buildkite pipeline via API call
+        # Put the PATH to desired pipeline here
+        # url = 'https://api.buildkite.com/v2/organizations//pipelines//builds' 
         header = { 'Authorization': 'Bearer %s'%(buildkite_token)}
-        body = {"commit": "FETCH_HEAD", "branch": "master", "message": "Started via API, attemps %s"%timestamp}
+        body = {"commit": "FETCH_HEAD", "branch": "master", "message": "Started via API"}
 
         # Make a request and create new build 
         request = requests.post(url, headers=header, json=body)
@@ -51,7 +50,8 @@ class Buildkite_runner:
 
     # Make one more call to receive current job states
     def state_check(self):
-        url = "https://api.buildkite.com/v2/organizations/ikukh-org/pipelines/test//builds/%s"%self.build_number
+        # url = Put the PATH to desired pipeline here
+        # url = "https://api.buildkite.com/v2/organizations/ikukh-org/pipelines/test//builds/%s"%self.build_number
         header = { 'Authorization': 'Bearer %s'%(buildkite_token)}
         response = requests.get(url, headers=header)
         data2 = response.json()
@@ -69,7 +69,8 @@ class Buildkite_runner:
         
     # Make a request to Jenkins server and start job there
     def start_jenkins_job(self):
-        url = 'http://admin:117e5cd4b9eda880bdb88b0571dd36f47d@localhost:8080/job/TestJob/buildWithParameters?token=123token'
+        # Put the PATH to desired pipeline here
+        # url = 'http://admin:117e5cd4b9eda880bdb88b0571dd36f47d@localhost:8080/job/TestJob/buildWithParameters?token=123token'
         print('Starting Jenkins job ...')
         request = requests.post(url)
         header = request.headers
@@ -83,7 +84,7 @@ class Buildkite_runner:
         if self.state_check():
             self.start_jenkins_job()
         else:
-            print('OH NO, SOMETHING WENT WRONG!')
+            print('SOMETHING WENT WRONG!')
     
 
 
