@@ -4,7 +4,8 @@ import time
 from datetime import datetime
 import os
 
-buildkite_token='fe629a29917aedc899810ccbf1a90bd7dfcc633e'
+buildkite_token = os.environ['BKT']
+print (os.environ['BKT'])
 
 print(os.environ[MYENV])
 
