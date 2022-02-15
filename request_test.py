@@ -11,8 +11,7 @@ print(os.environ['MYENV'])
 
 print(os.environ['BUILDKITE_BRANCH'])
 
-DTtestNAME=os.environ['buildkite-agent meta-data get dt-name']
-print(DTtestNAME)
+print(os.environ['NAME'])
 
 class Buildkite_runner:
 
