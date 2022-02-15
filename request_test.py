@@ -9,6 +9,8 @@ print (os.environ['BKT'])
 
 print(os.environ['MYENV'])
 
+print(os.environ['BUILDKITE_BRANCH'])
+
 
 class Buildkite_runner:
 
